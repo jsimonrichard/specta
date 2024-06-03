@@ -831,3 +831,14 @@ const _: () = {
         pub delta: glam::Vec2,
     }
 };
+
+#[cfg(feature = "eyre")]
+const _: () = {
+    use eyre::Report;
+
+    impl Type for Report {
+        fn inline(_: &mut TypeMap, _: Generics) -> DataType {
+            DataType::Primitive(PrimitiveType::String)
+        }
+    }
+};
