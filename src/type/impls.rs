@@ -833,12 +833,4 @@ const _: () = {
 };
 
 #[cfg(feature = "eyre")]
-const _: () = {
-    use eyre::Report;
-
-    impl Type for Report {
-        fn inline(_: &mut TypeMap, _: Generics) -> DataType {
-            DataType::Primitive(PrimitiveType::String)
-        }
-    }
-};
+impl_as!(eyre::Report as String);
